@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     api_port: int = 8000
 
     class Config:
-        env_file = ".env"
+        env_file = (".env", "api/.env")
         extra = "allow"
 
 settings = Settings()

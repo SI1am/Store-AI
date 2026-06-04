@@ -1,0 +1,17 @@
+/* App-level utility classes */
+.flex-row-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-green { color: var(--color-green); }
+.text-yellow { color: var(--color-yellow); }
+.text-red { color: var(--color-red); }
+.text-blue { color: var(--color-blue); }
+
+.bg-green-soft { background-color: var(--color-green-bg); }
+.bg-yellow-soft { background-color: var(--color-yellow-bg); }
+.bg-red-soft { background-color: var(--color-red-bg); }
+.bg-blue-soft { background-color: var(--color-blue-bg); }
