@@ -114,11 +114,11 @@ models/*.tflite
 # Video Footage & Data
 # ========================
 
-# CCTV footage (large binary files — not for GitHub)
-data/clips/CCTV Footage/
-data/clips/*.mp4
-data/clips/*.avi
-data/clips/*.mkv
+# CCTV footage (now trimmed to 2 mins for testing and cloud deployment)
+# data/clips/CCTV Footage/
+# data/clips/*.mp4
+# data/clips/*.avi
+# data/clips/*.mkv
 
 # Generated event logs (runtime output)
 data/clips/events_stream.jsonl
@@ -195,3 +195,5 @@ frontend.zip
 # ========================
 
 statement/
+dashboard/
+.gitignore

@@ -92,7 +92,8 @@ def ingest_events_to_backend(events) -> None:
         import json
         payload = {"events": [e.model_dump() for e in events]}
         payload_serialized = json.loads(json.dumps(payload, default=str))
-        r = httpx.post("http://127.0.0.1:8000/api/v1/events/ingest", json=payload_serialized, timeout=2.0)
+        backend_url = os.getenv("BACKEND_API_URL", "http://127.0.0.1:8000")
+        r = httpx.post(f"{backend_url}/api/v1/events/ingest", json=payload_serialized, timeout=2.0)
         if r.status_code != 200:
             logger.warning(f"Failed to ingest events: {r.status_code} - {r.text}")
         else:
@@ -383,5 +384,7 @@ def stream_camera(camera_id: str):
     return StreamingResponse(generate_frames(camera_id), media_type="multipart/x-mixed-replace; boundary=frame")
 
 if __name__ == "__main__":
-    logger.info("Starting live cameras streaming server on host port 8001...")
-    uvicorn.run(app, host="127.0.0.1", port=8001)
+    host = os.getenv("HOST", "127.0.0.1")
+    port = int(os.getenv("PORT", 8001))
+    logger.info(f"Starting live cameras streaming server on {host}:{port}...")
+    uvicorn.run(app, host=host, port=port)
